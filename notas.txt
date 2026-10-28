@@ -1,0 +1,6 @@
+#borrar los datos de usuario global de git
+git config --global --unset user.name
+
+#muestra ficheros modificados
+git status
+
