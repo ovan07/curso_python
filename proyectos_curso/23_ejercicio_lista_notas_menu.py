@@ -37,6 +37,6 @@ while opcion!=6:
             if len(lista_notas)>0:
                 print(f"El promedio de las notas introducidas es: {sumatoria/len(lista_notas)} \n")
         case 5:
-                print(f"Lista de notas: {lista_notas} \n")
+            print(f"Lista de notas: {lista_notas} \n")
         case 6:
-                print("Fin del programa")
+            print("Fin del programa")
