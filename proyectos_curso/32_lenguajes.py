@@ -5,7 +5,6 @@ cursos="Java basico, Python principiantes, C, Java avanzado, Java enterprise, Py
 
 cursos_lista=cursos.split(",")
 cursos_encontrados=[]
-curso_form=[]
 
 lenguaje=input("Introduza tu lenguaje: ").capitalize()
 
