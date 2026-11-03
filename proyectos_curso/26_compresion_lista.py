@@ -20,4 +20,11 @@ print(f"{aprobados}")
 def obtener_aprobados():
     return tuple(aprobados)
 
-print(f"{obtener_aprobados()}")
+print(f"{obtener_aprobados()} \n")
+
+#crea una lista a partir de la anterior que contenga
+#solo los positivos
+numeros=[3,-1,-9,4,2,11,-8,7,-5]
+
+positivos=[n for n in numeros if n>=0]
+print(positivos)

@@ -6,7 +6,7 @@ cursos="Java basico, Python principiantes, C, Java avanzado, Java enterprise, Py
 cursos_lista=cursos.split(",")
 cursos_encontrados=[]
 
-lenguaje=input("Introduza tu lenguaje: ").capitalize()
+lenguaje=input("Introduzca tu lenguaje: ").capitalize()
 
 for curso in cursos_lista:
     if lenguaje in curso.split():
