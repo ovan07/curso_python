@@ -42,10 +42,7 @@ def buscar_por_titulo(titulo):
     return libro
     
 def buscar_por_precio(precio):
-    encontrados=[]
-    for lib in lista_libros:
-        if precio>=lib["precio"]:
-            encontrados.append(lib)
+    encontrados=[lib["titulo"] for lib in lista_libros if precio>=lib["precio"]]  
     if not encontrados:
         print("No se encontraron libros")
     return encontrados
