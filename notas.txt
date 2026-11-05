@@ -1,3 +1,8 @@
+#repo
+https://github.com/amartinsierra/curso_python_getafe
+https://github.com/amartinsierra/python_persistencia
+https://github.com/amartinsierra/python_oct_26
+
 #borrar los datos de usuario global de git
 git config --global --unset user.name
 

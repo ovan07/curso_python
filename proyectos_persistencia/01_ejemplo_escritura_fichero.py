@@ -1,0 +1,9 @@
+#creamos un fichero y escribimos en el
+f=open("dias.txt","w")
+f.write("lunes \n")
+f.write("martes \n")
+f.write("miercoles \n")
+f.write("jueves \n")
+f.close()
+
+print("Los dias se han guardado")
