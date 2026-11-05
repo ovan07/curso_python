@@ -11,37 +11,25 @@ cursos=[
 #nombre del curso con la media mas alta
 #nombre del curso que finalizo antes
 
-#print(cursos[0]["fecha_fin"])
-
 def media(numeros):
-    media=0
+    if not numeros:
+        return 0
     suma=0
     for n in numeros:
         suma+=n
-    if suma>0:
-        media=suma/len(numeros)
-    return media
+    return suma/len(numeros)
     
 def convertir_fecha(texto):
     return dt.datetime.strptime(texto,"%d/%m/%Y")
 
 def curso_antes():
-    curso_nombre=""
-    fecha_menor=cursos[0]["fecha_fin"]
-    for c in cursos:
-        if convertir_fecha(c["fecha_fin"])<convertir_fecha(fecha_menor):
-            fecha_menor=c["fecha_fin"]
-            curso_nombre=c["denominacion"]
-    return curso_nombre
+    curso_mas_antiguo = min(cursos, key=lambda c: convertir_fecha(c["fecha_fin"]))
+    return curso_mas_antiguo["denominacion"]
+
 
 def curso_media_alta():
-    curso_nombre=""
-    media_alta=cursos[0]["calificaciones"]
-    for c in cursos:
-        if media(c["calificaciones"])>media(media_alta):
-            media_alta=c["calificaciones"]
-            curso_nombre=c["denominacion"]
-    return curso_nombre
+    curso_destacado = max(cursos, key=lambda c: media(c["calificaciones"]))
+    return curso_destacado["denominacion"]
 
 print("")       
 print(f"El curso '{curso_media_alta()}' obtuvo la nota media mas alta")
