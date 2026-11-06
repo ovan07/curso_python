@@ -10,17 +10,16 @@ import math
 import csv
 #from math import hypot
 
-resp="si"
-coordenadas=[]
+dir_fichero="coordenadas.csv"
 
 def distancia(punto1,punto2):
     #return math.dist(p1,p2)
     return math.hypot(punto1[0]-punto2[0],punto1[1]-punto2[1])
 
 def leer_fichero():
-    with open("empleados.csv","r") as f:
-        datos=list(csv.DictReader(f))
-    return datos
+    with open(dir_fichero,"r") as f:
+        coordenadas=list(csv.DictReader(f))
+    return coordenadas
 
 #Se pide al usuario su posición, después el programa
 #le mostrará las coordenadas del punto 
