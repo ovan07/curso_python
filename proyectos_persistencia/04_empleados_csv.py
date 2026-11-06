@@ -1,7 +1,7 @@
 import csv
 """
 with open("empleados.csv","r") as f:
-    next(f)     #se salta la 1ra linea
+    next(f)                         #se salta la 1ra linea
     datos=csv.reader(f,delimiter=",")
     for row in datos:
         print(row)
@@ -30,5 +30,5 @@ empleados=[d["empleado"] for d in datos if d["departamento"]==departamento]
 print(empleados)
 """
 #nombre del empleado con mayor salario
-mayor_salario= max(datos, key=lambda d: int(d["salario"]))
+mayor_salario = max(datos, key=lambda d: int(d["salario"]))
 print(f"el empleado '{mayor_salario["empleado"]}' tiene el mayor salario con {mayor_salario["salario"]}")
