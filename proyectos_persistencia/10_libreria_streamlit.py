@@ -38,10 +38,8 @@ with tab_nuevo:
     titulo = st.text_input("Introduce título")
     autor = st.text_input("Introduce autor")
     precio = st.number_input("Introduce pecio")
-    if not existe(titulo):
-        lista_libros.append({"titulo":titulo,"autor":autor,"precio":precio})
-    else:
-        st.error("El libro ya existe")
+    if st.button("Guardar libro"):
+        libros.append({"titulo": titulo, "autor": autor, "precio": precio})
 
 with tab_buscar:
     titulo = st.text_input("Introduce el títul del libro a buscar: ")
