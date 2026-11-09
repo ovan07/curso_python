@@ -18,47 +18,60 @@ Asi hasta que elija la opcion 5 que sale del programa
 """
 import streamlit as st
 
-lista_libros=[
+# Se define la variable que contiene los libros con un par de ellos como ejemplos
+lista_libros = [
     {"titulo":"Autos","autor":"Carlos P","precio":9.99},
     {"titulo":"Monumentos","autor":"Fran M","precio":15.45}
 ]
 
-tab_nuevo = st.tabs("1-Nuevo libro")
-tab_todos = st.tabs("2-Mostrar todos")
-tab_buscar = st.tabs("3-Buscar por titulo")
-tab_precios = st.tabs("4-Libros por precio maximo")
-
+# Guardamos en sesion
 if "libros" not in st.session_state:
-    libros=[] 
-    st.session_state.libros=libros
+    st.session_state.libros = lista_libros
 else:
-    libros=st.session_state.libros
+    lista_libros = st.session_state.libros
 
-with tab_nuevo:
-    titulo = st.text_input("Introduce título")
-    autor = st.text_input("Introduce autor")
-    precio = st.number_input("Introduce pecio")
-    if st.button("Guardar libro"):
-        libros.append({"titulo": titulo, "autor": autor, "precio": precio})
+# Definir los nombres de las pestañas
+tab_todos, tab_nuevo,tab_buscar,tab_precios,tab_tienda = st.tabs(["Mostrar todos","Nuevo libro","Buscar por título","Libros por precio máximo","Tiendas"])
 
-with tab_buscar:
-    titulo = st.text_input("Introduce el títul del libro a buscar: ")
-    libs=list(filter(lambda lib:lib["titulo"].lower()==titulo.lower(),lista_libros))
-    if libs:
-        st.success(f"Titulo: {libs[0]["titulo"]}, Autor: {libs[0]["autor"]}, Precio: {libs[0]["precio"]}")
-    else:
-        st.error("Libro no encontrado")
-    
-with tab_precios:
-    precio = st.number_input("Introduce un precio")
-    encontrados = [lib["titulo"] for lib in lista_libros if precio>=lib["precio"]]  
-    libs = list(filter(lambda lib:lib["titulo"] <= precio, lista_libros))
-    if libs:
-        st.success(f"Titulo: {libs[0]["titulo"]}, Autor: {libs[0]["autor"]}, Precio: {libs[0]["precio"]}")
-    else:
-        st.error("Libro no encontrado")   
- 
+# Contenido de las pestañas 
 with tab_todos:
     st.title("Listado de libros")
     st.table(lista_libros)
-       
+    
+with tab_nuevo:
+    titulo = st.text_input("Introduce título").capitalize()
+    autor = st.text_input("Introduce autor")
+    precio = st.number_input("Introduce pecio")
+    existe = list(filter(lambda lib:lib["titulo"] == titulo, lista_libros))
+    if st.button("Guardar") and titulo and not existe:
+        lista_libros.append({"titulo": titulo, "autor": autor, "precio": precio})
+        st.success("Libro guardado")
+
+with tab_buscar:
+    titulo = st.text_input("Introduce el título del libro a buscar: ").capitalize()
+    libs = list(filter(lambda lib:lib["titulo"] == titulo, lista_libros))
+    if st.button("Buscar", key = "boton1") and libs:
+        st.success(f"Titulo: {libs[0]["titulo"]}, Autor: {libs[0]["autor"]}, Precio: {libs[0]["precio"]}")
+    
+with tab_precios:
+    precio = st.number_input("Introduce un precio")
+    libs = list(filter(lambda lib:lib["precio"] <= precio, lista_libros))
+    if st.button("Buscar", key = "boton2") and libs:
+        st.success(f"Los libros encontrados en el rango de precio")
+        st.table(libs)
+        
+with tab_tienda:
+    col_tienda,col_direccion,col_imagen = st.columns(3)
+    col_tienda.write("**Nombre tienda**")
+    col_direccion.write("**direccion tienda**")
+    col_imagen.write("**Foto**")
+    tiendas = [
+        {"nombre":"tienda 1","direccion":"dir1","foto":"tienda.jpg"},
+        {"nombre":"tienda 2","direccion":"dir2","foto":"tienda.jpg"},
+        {"nombre":"tienda 3","direccion":"dir3","foto":"tienda.jpg"},
+        ]
+    for tienda in tiendas:
+        col_tienda,col_direccion,col_imagen = st.columns(3)
+        col_tienda.write(tienda["nombre"])
+        col_direccion.write(tienda["direccion"])
+        col_imagen.image(tienda["foto"], width = 70)
