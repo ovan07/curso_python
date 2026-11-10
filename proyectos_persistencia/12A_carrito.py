@@ -54,7 +54,7 @@ if len(carrito) > 0:
             st.session_state.carrito.pop(indice2)
             st.rerun()
         indice2 += 1
-        # vamos calculando el total sumando el precio por el numero de unidades
+        # calculamos el total, sumando el precio por el numero de unidades
         total += int(c["precio"]) * c["unidades"]
 
     st.write(f"**Total:** {total} €")

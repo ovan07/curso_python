@@ -11,7 +11,11 @@ db = con.connect(
 
 cursordb = db.cursor(dictionary = True)
 
-cursordb.execute("select * from alumnos")
+sql_insert = "insert into alumnos values(%s,%s,%s,%s,%s)"
+values = [("7777k","alumno7","al7@email.com","python",9)]
+#cursordb.execute(sql_insert, values)
+#db.commit()
+cursordb.execute("select * from alumnos where nota > %s", [(5)])
 
 #se imprimen los datos de cada fila en forma de tupla
 for row in cursordb:
