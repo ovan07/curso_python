@@ -23,9 +23,10 @@ def generar_tabla3(lista):
 st.header("Gestión de empleados")
 
 # pestañas 
-tab_op1, tab_op2 = st.tabs([
+tab_op1, tab_op2, tab_op3 = st.tabs([
     "Alta de empleados",
-    "Filtrar empleados"
+    "Filtrar empleados",
+    "Actulizar datos"
 ]) 
 # contenido de las pestañas
 with tab_op1:
@@ -57,3 +58,12 @@ with tab_op2:
         if st.button("Buscar") and salario_min and salario_max:
             empleados = repo.empleados_por_rango(salario_min, salario_max)
             generar_tabla3(empleados)
+            
+with tab_op3:
+    empleados = repo.empleados()
+    datos = st.data_editor(empleados, disabled = "_id")
+    #st.write(datos)
+    if st.button("Actualizar"):
+        repo.actualizar_empleados(datos)
+        st.toast("Datos guardados", icon = "✅")
+        st.rerun()
