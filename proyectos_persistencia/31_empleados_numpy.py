@@ -23,4 +23,4 @@ print(salario_medio)
 edad_mayor = np.amax(edades)
 print(edad_mayor)
 
-print(np.sort(departamentos))
+print(np.unique(departamentos))
