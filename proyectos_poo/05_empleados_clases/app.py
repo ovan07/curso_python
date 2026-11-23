@@ -43,5 +43,6 @@ with tab_op3:
     departamento = st.selectbox("Departamento",e_gestor.departamentos(), index = None, placeholder = "Seleccione")
     if departamento:
         empleados = e_gestor.empleado_departamento(departamento)
-        st.write(vars(empleados))
-        st.dataframe()
+        datos = [vars(e) for e in empleados]
+
+        st.dataframe(datos)

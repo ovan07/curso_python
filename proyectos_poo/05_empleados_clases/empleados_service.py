@@ -39,4 +39,4 @@ class Gestor_Empleados:
             return list(set([d["departamento"] for d in datos]))
         
         
-print(Gestor_Empleados("empleados.csv").departamentos())
+#print(Gestor_Empleados("empleados.csv").departamentos())
