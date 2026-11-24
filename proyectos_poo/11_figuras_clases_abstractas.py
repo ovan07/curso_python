@@ -24,3 +24,16 @@ class Triangulo(Figura):
     
     def superficie(self):
         return (self.base * self.altura) / 2
+
+
+def mostrar_datos(fig):
+    print(f"Color de la figura: {fig.color}")
+    print(f"Superficie de la figura: {fig.superficie()}")
+
+    if isinstance(fig, Circulo):
+        print(f"Radio: {fig.radio}")
+    if isinstance(fig, Triangulo):
+        print(f"Base: {fig.base}, Altura: {fig.altura}")
+
+mostrar_datos(Circulo("naranja", 5))
+mostrar_datos(Triangulo("azul", 10,5))

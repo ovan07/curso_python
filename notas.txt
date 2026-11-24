@@ -1,13 +1,16 @@
 #repo
+https://github.com/amartinsierra/python_oct_26
 https://github.com/amartinsierra/curso_python_getafe
 https://github.com/amartinsierra/python_persistencia
-https://github.com/amartinsierra/python_oct_26
+
 
 #borrar los datos de usuario global de git
 git config --global --unset user.name
 
+
 #muestra ficheros modificados
 git status
+
 
 #directorio del profe
 \\G-CAS-3711\curso_python_tardes
@@ -17,4 +20,4 @@ git status
 #si es par o impar. Después, se pregunta si quiere introducir otro número
 #Si dice que sí(S), se vuelve a pedir el número y a indicar si es par o impar. 
 #A continuación se vuelve a preguntar si quiere introducir otro número, y así hasta
-#que diga que no(N) 
+#que diga que no(N)
