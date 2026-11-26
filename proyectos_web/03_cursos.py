@@ -20,8 +20,9 @@ def alta_curso(curso: Curso):
 def cursos_tematica(tematica: str):
     return [c for c in lista_cursos if c.tematica == tematica]
 
-@app.delete("/cursos/{codigo}")
+@app.delete("/curso")
 def eliminar_curso(codigo: int):
-    if codigo < 0:
+    if codigo <= 0:
         raise HTTPException(status_code=409, detail="Codigo no valido")
-    lista_cursos = [c for c in lista_cursos if c.codigo != codigo]
+    lista_cursos[:] = [c for c in lista_cursos if c.codigo != codigo]
+    return lista_cursos
