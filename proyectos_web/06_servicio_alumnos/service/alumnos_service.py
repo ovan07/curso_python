@@ -17,7 +17,6 @@ class AlumnosService:
 
     # def buscar_alumno_curso_email(self, curso, email):
     #     alumno = self.repo.find_by_curso_email(curso, email)
-    #     print(alumno)
     #     if not alumno:
     #         return None
     #     return Alumno(**alumno)

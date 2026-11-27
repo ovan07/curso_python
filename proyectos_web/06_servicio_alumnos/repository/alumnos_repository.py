@@ -21,7 +21,7 @@ class AlumnosRepository:
         return alumnos
 
     def find_by_curso_email(self, curso: str, email: str):
-        sql = "select * from alumnos where email=%s and curso=%s"
+        sql = "select * from alumnos where (email=%s and curso=%s)"
         con = connection_pool.get_connection()
         cursor = con.cursor(dictionary=True)
         cursor.execute(sql, (email, curso))
