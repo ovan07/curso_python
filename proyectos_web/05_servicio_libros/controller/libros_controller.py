@@ -1,6 +1,6 @@
 from typing import List
 from fastapi import HTTPException, APIRouter
-from model.libros_model import Libro
+from model.libro_model import Libro
 from service.libros_service import LibrosService
 
 router = APIRouter()
@@ -20,4 +20,3 @@ def buscar_libro(isbn: int):
 @router.delete("/libro/{isbn}")
 def eliminar_libro(isbn: int):
     servicio.eliminar_libro(isbn)
-

@@ -1,5 +1,5 @@
 from repository.libros_repository import LibrosRepository
-from model.libros_model import Libro
+from model.libro_model import Libro
 
 class LibrosService:
     repo = LibrosRepository()

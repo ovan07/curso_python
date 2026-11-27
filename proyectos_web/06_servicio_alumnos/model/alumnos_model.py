@@ -5,5 +5,3 @@ class Alumno(BaseModel):
     curso: str
     email: str
     nota: float
-
-

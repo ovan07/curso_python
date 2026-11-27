@@ -1,4 +1,4 @@
-from model.libros_model import Libro
+from model.libro_model import Libro
 from config.app_config import connection_pool
 
 class LibrosRepository:

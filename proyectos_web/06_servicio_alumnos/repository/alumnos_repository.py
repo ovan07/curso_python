@@ -14,17 +14,17 @@ class AlumnosRepository:
     def find_all(self):
         sql = "select * from alumnos"
         con = connection_pool.get_connection()
-        cursor = con.cursor()
+        cursor = con.cursor(dictionary=True)
         cursor.execute(sql)
         alumnos = cursor.fetchall()
         con.close()
         return alumnos
 
     def find_by_curso_email(self, curso: str, email: str):
-        sql = "select * from alumnos where curso=%s and email=%s"
+        sql = "select * from alumnos where email=%s and curso=%s"
         con = connection_pool.get_connection()
-        cursor = con.cursor()
-        cursor.execute(sql, (curso, email))
+        cursor = con.cursor(dictionary=True)
+        cursor.execute(sql, (email, curso))
         alumno = cursor.fetchone()
         con.close()
         return alumno
@@ -45,5 +45,3 @@ class AlumnosRepository:
         cursor.execute(sql, (email,))
         con.commit()
         con.close()
-
-
